@@ -1,0 +1,44 @@
+# Python virtual environments
+venv/
+.env
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Editor / IDE folders
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Uvicorn reload artifacts
+*.pid
+
+# pytest, coverage, mypy outputs (if you use them)
+htmlcov/
+.coverage
+.mypy_cache/
+.pytest_cache/
+
+# Jupyter Notebook checkpoints (if any)
+.ipynb_checkpoints/
+
+# Optional: Pydantic cache (if using version 2.x)
+.pdm.toml
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Docker / Compose
+*.db
+docker-compose.override.yml
