@@ -9,6 +9,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
+# Environment variables (pass values at runtime)
+ENV OPENAI_API_KEY=""
+ENV AZURE_OPENAI_API_KEY=""
+ENV ENDPOINT_URL=""
+
 EXPOSE 9000
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "9000"]
