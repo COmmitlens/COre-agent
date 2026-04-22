@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from app.chains.summary_chain import generate_streaming_response
+from app.chains.summary_chain import generate_streaming_response, classify_query_intent
 
 router = APIRouter()
 
@@ -24,6 +24,19 @@ async def explain_commit_file_change(req: ExplainCommitFileChangeReqs):
             yield chunk
 
     return StreamingResponse(stream_generator(), media_type="text/event-stream")
+
+
+class ClassifyQueryIntentReqs(BaseModel):
+    userQuery: str
+
+
+@router.post("/classify-query-intent")
+async def classify_query_intent_route(req: ClassifyQueryIntentReqs):
+    """
+    Classify the intent of a user query and return the matched intent label.
+    """
+    intent = await classify_query_intent(req.userQuery)
+    return {"intent": intent}
 
 
 @router.get("/")
